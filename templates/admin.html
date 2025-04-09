@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel</title>
+</head>
+<body>
+    <h1>Admin Panel</h1>
+    <form method="post">
+        <label>Password:</label>
+        <input type="password" name="password">
+        <br><br>
+
+        <h2>Upload File</h2>
+        <label>Folder:</label>
+        <input type="text" name="folder">
+        <input type="file" name="file">
+        <input type="hidden" name="action" value="upload">
+        <button type="submit">Upload</button>
+    </form>
+
+    <form method="post">
+        <label>Password:</label>
+        <input type="password" name="password">
+        <br>
+        <label>Delete Path (relative to /static):</label>
+        <input type="text" name="path">
+        <input type="hidden" name="action" value="delete">
+        <button type="submit">Delete File</button>
+    </form>
+
+    <form method="post">
+        <label>Password:</label>
+        <input type="password" name="password">
+        <br>
+        <label>Metadata Key (filename):</label>
+        <input type="text" name="meta_key">
+        <label>Description:</label>
+        <input type="text" name="meta_value">
+        <input type="hidden" name="action" value="update_metadata">
+        <button type="submit">Update Metadata</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Peter Kelly – Resume</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Peter Kelly</h1>
+        <p>Resume • References • Certificates</p>
+        <a href="/admin">Admin Panel</a>
+    </header>
+
+    {% for folder, files in files_by_dir.items() %}
+    <section>
+        <h2>{{ folder.capitalize() }}</h2>
+        <div class="carousel">
+            {% for file in files %}
+                <div class="slide">
+                    {% if file.endswith('.pdf') %}
+                        <iframe src="{{ url_for('static_file', filename=folder + '/' + file) }}" width="100%" height="400px"></iframe>
+                    {% else %}
+                        <img src="{{ url_for('static_file', filename=folder + '/' + file) }}" alt="{{ file }}">
+                    {% endif %}
+                    {% if metadata.get(file) %}
+                        <p class="meta">{{ metadata[file] }}</p>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+    {% endfor %}
+</div>
+</body>
+</html>
